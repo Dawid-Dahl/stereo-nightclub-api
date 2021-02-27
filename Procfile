@@ -1,1 +1,1 @@
-web: gunicorn stereo_nightclub.wsgi --log-file -
+web: gunicorn stereo_nightclub_api.wsgi --log-file -

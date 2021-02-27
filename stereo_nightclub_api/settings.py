@@ -25,7 +25,7 @@ SECRET_KEY = 'r9v5=w5%r=+^63+_!xuig(^7%kl)-7opl^!5lm1*t9q^wrm4_z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["0.0.0.0", "localhost"]
 
 
 # Application definition
@@ -83,11 +83,11 @@ WSGI_APPLICATION = 'stereo_nightclub_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'df9mu9ph1n1vcc',
-        'HOST': 'ec2-54-155-208-5.eu-west-1.compute.amazonaws.com',
+        'NAME': 'd7btj1cjafl1f',
+        'HOST': 'ec2-54-155-87-214.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
-        'USER': 'ghbqeevohfjqdc',
-        'PASSWORD': '0a16aa805d0dbd0e824383ff04ff15fe35959ff70bc859bb4236298ef5586e76'
+        'USER': 'hnxtzohxhsluvh',
+        'PASSWORD': '96e53dc4051eaa68bd69be9be12346f822ead224fc941cdcd72d5c40bac403a6'
     }
 }
 
@@ -135,3 +135,9 @@ AUTH_USER_MODEL = 'users.CustomUser'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:1234",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+}
