@@ -26,7 +26,8 @@ SECRET_KEY = 'r9v5=w5%r=+^63+_!xuig(^7%kl)-7opl^!5lm1*t9q^wrm4_z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["stereo-nightclub-api.herokuapp.com", "0.0.0.0", "localhost"]
+ALLOWED_HOSTS = ["stereo-nightclub-api.herokuapp.com",
+                 "0.0.0.0", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -135,7 +136,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 AUTH_USER_MODEL = 'users.CustomUser'
 
 CORS_ALLOWED_ORIGINS = [
-    "https://stereo-nightclub-client.herokuapp.com/",
+    "https://stereo-nightclub-client.herokuapp.com",
     "http://localhost:1234",
 ]
 

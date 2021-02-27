@@ -7,6 +7,12 @@ from rest_framework.response import Response
 
 @api_view(["GET"])
 def get_products(request):
-    print(request)
     data = ProductSerializer(Product.objects.all(), many=True).data
+    print(data)
+    return Response(data)
+
+
+@api_view(["GET"])
+def get_product(request, pk):
+    data = ProductSerializer(Product.objects.get(id=pk)).data
     return Response(data)
