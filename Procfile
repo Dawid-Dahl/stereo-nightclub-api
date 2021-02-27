@@ -1,0 +1,1 @@
+web: gunicorn stereo_nightclub.wsgi --log-file -

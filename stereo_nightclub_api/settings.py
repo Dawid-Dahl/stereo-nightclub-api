@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+
+    'users.apps.UsersConfig',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +80,12 @@ WSGI_APPLICATION = 'stereo_nightclub_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'df9mu9ph1n1vcc',
+        'HOST': 'ec2-54-155-208-5.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
+        'USER': 'ghbqeevohfjqdc',
+        'PASSWORD': '0a16aa805d0dbd0e824383ff04ff15fe35959ff70bc859bb4236298ef5586e76'
     }
 }
 
@@ -118,3 +127,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'users.CustomUser'
