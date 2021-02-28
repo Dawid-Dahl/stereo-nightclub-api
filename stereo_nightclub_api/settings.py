@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 
-    'users.apps.UsersConfig',
+    'users',
     'api.apps.ApiConfig',
 ]
 
@@ -133,7 +133,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = 'users.NewUser'
 
 CORS_ALLOWED_ORIGINS = [
     "https://stereo-nightclub-client.herokuapp.com",
@@ -148,6 +148,6 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        'rest_framework.permissions.AllowAny',
     ]
 }
