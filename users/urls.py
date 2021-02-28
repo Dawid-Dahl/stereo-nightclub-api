@@ -1,6 +1,6 @@
 from django.urls import path
-""" from .views import get_is_user_logged_in """
+from .views import CustomUserRegistration
 
 urlpatterns = [
-
+    path('register/', CustomUserRegistration.as_view())
 ]
