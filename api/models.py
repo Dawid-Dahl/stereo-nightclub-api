@@ -20,7 +20,7 @@ class Product(models.Model):
     title = models.CharField(max_length=50)
     image = models.CharField(max_length=200, null=True)
     description = models.CharField(max_length=200)
-    price = models.DecimalField(max_digits=100, decimal_places=2)
+    price = models.IntegerField()
     ingredients = models.ManyToManyField(Ingredient)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

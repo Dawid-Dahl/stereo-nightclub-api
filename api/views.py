@@ -20,16 +20,22 @@ def get_product(request, pk):
 
 
 class CreateProduct(APIView):
+    serializer_class = ProductSerializer
 
     def post(self, request):
         try:
             print("RAW: ", request.data)
-            serialized = ProductSerializer(request.data)
-            print("FROM SERIALIZER: ", serialized)
-            if serialized.is_valid():
-                serialized.save()
-                Response(status=status.HTTP_201_CREATED)
+            serializer = self.serializer_class(data=request.data)
+
+            print("Error detail: ", serializer.error_messages)
+            print("FROM SERIALIZER: ", serializer)
+            if serializer.is_valid():
+                print("BEFORE SAVING")
+                serializer.save()
+                print("AFTER SAVING")
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
             else:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
+            print(e)
             return Response(status=status.HTTP_400_BAD_REQUEST)
