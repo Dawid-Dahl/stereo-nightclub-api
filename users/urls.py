@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import CustomUserRegistration, get_is_user_logged_in
+from .views import CustomUserRegistration, BlackListToken
 
 urlpatterns = [
     path('register/', CustomUserRegistration.as_view()),
-    path('is-logged-in/', get_is_user_logged_in)
+    path("logout/blacklist/", BlackListToken.as_view())
 ]

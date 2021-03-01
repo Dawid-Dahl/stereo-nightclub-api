@@ -5,12 +5,7 @@ from rest_framework.permissions import AllowAny
 from .serializers import CustomUserSerializer
 from rest_framework import status
 from django.db.utils import IntegrityError
-
-
-@api_view(["GET"])
-def get_is_user_logged_in(request):
-    is_authenticated = request.user.is_authenticated
-    return Response({"isUserLoggedIn": is_authenticated})
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 class CustomUserRegistration(APIView):
@@ -27,3 +22,19 @@ class CustomUserRegistration(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except IntegrityError as e:
             return Response(e.args[0], status=status.HTTP_400_BAD_REQUEST)
+
+
+class BlackListToken(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        try:
+            """ print("DATA: ", request.data) """
+            refresh_token = request.data["refresh_token"]
+            """ print("THE DATA: ", refresh_token) """
+            token = RefreshToken(refresh_token)
+            print("TOKEN: ", token)
+            token.blacklist()
+            return Response(status=status.HTTP_205_RESET_CONTENT)
+        except Exception as e:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
