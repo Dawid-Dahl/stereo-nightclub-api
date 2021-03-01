@@ -34,9 +34,7 @@ class BlackListToken(APIView):
 
     def post(self, request):
         try:
-            """ print("DATA: ", request.data) """
             refresh_token = request.data["refresh_token"]
-            """ print("THE DATA: ", refresh_token) """
             token = RefreshToken(refresh_token)
             print("TOKEN: ", token)
             token.blacklist()
