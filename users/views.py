@@ -2,15 +2,13 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
-from users.serializers import CustomUserSerializer
+from .serializers import CustomUserSerializer
 from rest_framework import status
 from django.db.utils import IntegrityError
-from django.contrib import messages
 
 
 @api_view(["GET"])
 def get_is_user_logged_in(request):
-    print(request.user)
     is_authenticated = request.user.is_authenticated
     return Response({"isUserLoggedIn": is_authenticated})
 
@@ -18,14 +16,11 @@ def get_is_user_logged_in(request):
 class CustomUserRegistration(APIView):
     permission_classes = [AllowAny]
 
-    def post(self, request):
+    def post(self, request, format='json'):
         try:
             serializer = CustomUserSerializer(data=request.data)
-            print(1)
             if serializer.is_valid():
-                print(2, serializer)
                 user = serializer.save()
-                print("USER", user)
                 if user:
                     json = serializer.data
                     return Response(json, status=status.HTTP_201_CREATED)

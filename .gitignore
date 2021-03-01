@@ -15,3 +15,4 @@ tests/report/
 htmlcov/
 .coverage
 db.sqlite
+settings.py
