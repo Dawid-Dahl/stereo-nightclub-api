@@ -2,10 +2,15 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
-from .serializers import CustomUserSerializer
+from .serializers import CustomUserSerializer, MyTokenObtainPairSerializer
 from rest_framework import status
 from django.db.utils import IntegrityError
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.views import TokenObtainPairView
+
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
 
 class CustomUserRegistration(APIView):
